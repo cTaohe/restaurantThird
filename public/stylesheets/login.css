@@ -1,0 +1,56 @@
+.container-login {
+  margin: -250px 0px;
+}
+
+.row-form {
+  max-width: 480px;
+  padding: 50px;
+  border-radius: 20px;
+  background: rgba(230,230,230,0.95);
+  box-shadow: 20px;
+}
+
+.login-title {
+  padding-bottom: 30px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.text-center span {
+  font-size: 18px;
+  color: #999;
+}
+
+.login-form-input, .login-form-btn {
+  height: 45px;
+  padding: 10px;
+  border: none;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+.social-icon {
+  font-size: 40px;
+  margin: 5px;
+}
+.facebook {
+  color: #4267B2;
+}
+.google {
+  color: #ED553B;
+}
+
+.facebook:hover, .google:hover {
+  color: #66F;
+}
+
+.signUpNow {
+  color: #B87DBA;
+}
+.signUpNow:hover {
+  color: #B87DBA;
+}
+.signUpNow:visited {
+  color: #B87DBA;
+}
