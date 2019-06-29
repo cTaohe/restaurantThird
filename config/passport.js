@@ -60,7 +60,6 @@ module.exports = passport => {
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
   },(accessToken, refreshToken, profile, done) => {
-    console.log(profile._json)
     User.findOne({
       email: profile._json.email
     }).then(user => {
