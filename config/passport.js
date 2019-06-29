@@ -6,6 +6,7 @@ const User = require('../models/user.js')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 module.exports = passport => {
+  // local login
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       User.findOne({
@@ -25,6 +26,7 @@ module.exports = passport => {
       })
     })
   )
+  // OAuth Facebook
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
@@ -55,6 +57,7 @@ module.exports = passport => {
       })
     }
   ))
+  // OAuth Google
   passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_ID,
     clientSecret: process.env.GOOGLE_SECRET,
@@ -83,10 +86,12 @@ module.exports = passport => {
         }
       })
     }
-));
+  ))
+  // serializeUser
   passport.serializeUser((user, done) => {
     done(null, user.id)
   })
+  // deserializeUser
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
       done(err, user)

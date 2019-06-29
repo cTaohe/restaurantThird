@@ -73,6 +73,7 @@ router.post('/register', (req, res) => {
 
   }
 })
+
 // 登出 logout
 router.get('/logout', (req, res) => {
   req.logOut()
