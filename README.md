@@ -1,17 +1,16 @@
 # 我的餐廳清單
 
-使用 RESTful 方式重構路由
+我的餐廳清單，除了可以新增、編輯、刪除，增加帳號登入功能，可由本地端直接註冊帳號，亦可藉由OAuth2.0可以使用facebook、google第三方登入。
 
-## 安裝環境
-
-- Windows 10
-- Node.js
-- Express
-- Express-handlebars
-- Mongoose
-- body-parser
-- nodemon
-- method-override
+## 新增安裝環境
+- passport
+- passport-google-oauth20
+- passport-facebook
+- passport-local
+- connect-flash
+- bcryptjs
+- dotenv
+- express-session
 
 ## 下載及安裝
 
@@ -22,21 +21,21 @@
 安裝專案
 ```
 nvm install 10.15.3
-git clone https://github.com/cTaohe/restaurantRESTful.git
-cd restaurantRESTful
+git clone https://github.com/cTaohe/restaurantThird.git
+cd restaurantThird
 npm install
 ```
 
-在 restaurantRESTful/models/seeds/ 產生種子檔案
+在 restaurantThird/models/seeds/ 產生種子檔案
 
 ```
-cd restaurantRESTful/models/seeds
+cd restaurantThird/models/seeds
 node restaurantSeeder.js
 ```
 
 ### 執行
 
-在 restaurantRESTful 資料夾下
+在 restaurantThird 資料夾下
 ```
 npm run dev
 ```
@@ -44,16 +43,17 @@ npm run dev
 
 ## 功能
 
-- 搜尋餐廳名稱、英文名稱、類型
-- 點選圖片顯示詳細資訊
-- 新增餐廳
-- 編輯餐廳
-- 刪除餐廳
-- 排序瀏覽
+- 帳號註冊
+- 帳號登入
+- 第三方登入
 
 ## 畫面
-新增排序
-![image](https://lh3.googleusercontent.com/gcevGGOHw7s09N7OxmA063YC8I02y1R_GgIZmGJ2uhd82o1fBheuhLCRZR8OAoxTLH_5O0wdY0tbUFoUmPMEBybpdqNNU2YeaTmAP2eJmbn5uHd190F3JIyI2MS4n6jHc0YcRdsIl7nDSUqNCaP6MkLxheSKo_xqCaDWzsx0Uc5aho82wP1V7r5HW9xp68LlVCNEf7oUGzt2of1K84hKyQ69RH8eMHoYfDTmgjkLfcoUeFGiylxcykghwUMx65DG_vrxjPuK37Cp4etKwgkcvcOf6svNZUd7h_0N9MI-_HgJlTONS3GuAVcnYNpDntPzybriprPqbl0l_RdenJMyp9LBcrWbAgcsPdIzZ1Iqv-uPVyEemhZdZy-cXUtIqeDY-RESfHHv9Fiff2sG65xq0jNNUXmsBMWz3ZYP65v-91DCkYdg2P4fvJHJfXSYfWZmqYHIPjZSE-Xj7tYTRkcrywRWYOA1IsrlYMe6cMx74RwAq5cOZ-NTrB_d3i6jbQC5xJgiQ9rksbMV0_SaUMaDW-7Q4HsZUr82ZSEW9UMbU9A4opKd3Ym7CHmHlbzr1bbbUUfVkZIR4Om-aXeYBLkrWzLaX9aQfN7An77wNUS26VqdzpKoUUFCsYsh6H0ggBrDpZmGMLWVv6GKwwJvF7RS2jA5G2FSZNWQ_fYuRI6raAMIyDowrChJfodSsdTJVsm4VTdw-miljOVz_r6cTpMn60G7=w1358-h951-no)
+登入
+![image](https://lh3.googleusercontent.com/ElOoOtKltZ0kgzUia4Q-_QFvos4CuBRBlQjd5Os5Vp_WwPa4FAKh3iM-mU0fyvAIiUQwfY323j9--cAgfG-oxRUbu6qkbCYRuO-DR-4DpSjC0m6p4_sdTpqGoCu3YQJmAdB6mF0CRlV7qyrHIklOQ8MP7lR8LwDgy1mOnw00k_DqVBT1tWWzw62tv-C8U18-E0tyxS0ilNLJ8F6Gy-RPzisl049DZ2DUz-MMQ8z-gW8Pl57z-YNcSAYeprm0jYKGANJpkJ-akNXAwuwb-YPY6DUd8bNO0v3AurJq0I6CXevuFd1jnG9XoSfjoWY1JcxNYDYXMHxrKoDk4Y4EUDAPUkZnJEnWhqfRkfOYr_u4rA2enoDQdoFzZUyTf4yUqkgSvqPGE8X11Wx4gzT1PCTL0XEFGL5MM_UWz4RhQErgV1lEQGai-8jZ7OOH2vPBXxnsQaHUBAf5OZJX8b13ACeTgcSyorcg-zoj9LKMyLvtR47DpUadiF1IATcbEopVYznYbP9kDV7euWkpjCA7iVWu6CAaqqFELrUcPwgcDdhJ0xOUHgUwdR_TrCAyq84H3pp87nRjZ6eHa7Dh9tZ_-Cip73DD-hn9nICjNM-Mo7xZkSPz3s8ysuA3-kMc0Tw2YpUs4NxYB53JQJ-s87FkKOYpEQgCwAiYGgiEwXsX2uGvqzWymAQOEQBJrlGsQRpAcvC8_r1r_vFD1ESLUI7WoyNWLjic=w750-h953-no)
 
-驗證
-![image](https://lh3.googleusercontent.com/C6Vz5h7y0fwF36-w8dCrmoC-eUm3wg6C9BOksWjR_WlwRhMTJwYxIDjwq7OfPp4xUSxZ1X6VF3kiOruYCAonvZh0Z8IzAybmzayhZMDcBUNxqHcGHmk4I5ZYl3V6thHfCwI-jsHOXAsGwsUB9NTRzJecafYH8gLHvokYVMBBgwNte_vA2AS6aeUOJ08bsL33lzOOyh6Pn9q0nz16KsW8WlorAj6xfc68lb_SA6vN6yydnsD-QLzcQa-G6rHIjvhjh0UbRAIKJFBXo8_-sxFGhV5OgWxmVEZcsjPSpDb6jKqoQpnIRWfrdN7BfUV6KauLkT5eeofe_KNqX_TGOnQvp81_yqB07uc2OZfZnzrCV-NjKAcWcorPVc2slPMQ1A0N-NYvGK8ubhTjOxPirvdH3cligBMt942r0d3zWG5CtD6sWN7Kcc7QEHCsG_0Oxg5eqAn3BPYt0KpN6UwB2NvC1XzIZnQy5iGQjLGG6gNT7rIcxiJv8oZHTQgarZZSX-ypZ_vBxzBnRIhjXsDD5oQlhpq01JOJhlcPfKEaSutz0sOo8-BosAK1wIX4PnnesOh_FFtWVJuzQE_drlqEuVT4-u3hzu5ihyQnhHXbETT8PqXbJUGiFf0VxV9LFivbjPn16d1Vwz63-PIgCkSB6-pW8jWeh_H0oyuSPNVOBT3XMsEdCEfrSuwVVVbnHVhZXf6gXUIztqBGWN2VXHIUk5FmzxzY=w1358-h951-no)
+註冊
+![image](https://lh3.googleusercontent.com/VcKlqjN_obMdkskk2jj0t08ZdcuZ0WjlpT6TkJa0yFG0PKII4iZ5iO9dNRYGmv_NwgRTQH_ARAB8uTaDjbVxZAWJdoIqm9V4lSMhiQGAip3LEMJQ7dUkrBczPLLSVBs6rp8m_wPoqApXQHK3GV7ia8rY98Sg3lzD5b568R1gxo_4Pn8JjUPGS9-D8bjWxYc1N8GECu-r9-MX-amgBX4ry36-alr6W0--c-LlswbXJIfJHnTK0Dqqn83qwpRjcQf47ZLBSvFOLqpEaHJDXdAQAGcGPG5rHwA9eAQwOFe2ZoeS7LEUbw9Bwz02frdgHtproFHyARejJ-HpTXn-2H4LTEsKxSLp1Z9SmVpXbocTiWhKh62-LNPmXD7eveNJ8WEf8BGkfwxBoZTF_brfP-v0mf7rJCy-eaexjw4xCfBaMNQOPji4tZKjP_EZiTvhYsLIlGLIcEUsqT5lc1OXBNNK6-cBglKejkT1AwweP7Lj6NCLb9txMrXlVXovW_9OlwIlwhEYELOVnUBD4BJwdhSWZN_q5WjUmg82B4SHv_7e3ScBJLX-3yCTMSBHcxbC5vQr7JNnAI5txcMmOTRFdnT8D05g58xnUXasxui88XQpdizMUAN-OfgC3JbOVm876ESCjhl4UjS8rJyumuuLa2sGd9QO_UrrFIy2bxddTqFgOLfmH4mo1Xp6gPUVpD4p3TzNhLxRiJrrw5t_njwps1AXpm11=w727-h947-no)
+
+登出
+![image](https://lh3.googleusercontent.com/DBB_Wai8KczB2JdoSjJIeq17BwGsk57jR62zogpyeeA3RiUhYbfujkldQLk8WwPi4F7n7KrAxvCIVz7DYVGKfVUJCODf7DzJE18s7VQ0ao3rKg5w8rmqL17MN2LIFvMOyYn-JZnhXLaXg3Y_m8LWZq_84J4JqxqbUCno-O3RX8QNSevq4JUu--FODaSPji5M_Kebr7xi4kpAemdZuAS6bzNPz1ix_-LVhBcXsxF9Lz5zZTj-i4XgYbwVSJd8EnyE-jN7JH1_HZ0_m9YmSFJeCMnNf9IvgC8opD0OLqsncvHHIffpG2-QCwnAErG8pPVGcBbP6TYH89FoygEXEqL3UJFDT9VRetmTpaG2uQyWqjSsQTNTvh4mGZixGc-6_Fi5htr9mu5HnyP7hdGECXDWvORJY4oLsqx7RgkpqQyi0BB2VmnW-AXvNM4EAPo15qDAfuDQsbzTZtnhKtu_kNUsUxPpYsVWS69oo8AnWBTsX3vBtmuvbR3dQuk0GM6Dc2vY4sdrX0qTLzuN5aqy6aSNjz5TOw114cTDAvvu036_2JGKoj6tgfUESDX8uTA11VciDqTTt9Z_SpdRrxOyvsXOmVMCyY_wK6_GVO9fw5gR6CX93NovbuRqIKtW-PJYcVb-GiBtqX_TrKt_lP2eHHwt6xJADV78JFp4MBQok3J2BO_KCtw8lM33-ojzdUzl9uzGlT0nq79ddqvf32It9zjJL6YA=w727-h951-no)
+
