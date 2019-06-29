@@ -10,7 +10,7 @@ const session = require('express-session')
 
 // setting mongoose
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', () => {
   console.log('mongoose error')
@@ -20,7 +20,9 @@ db.once('open', () => {
 })
 // use passport-session
 app.use(session({
-  secret: 'resraurant'
+  secret: 'resraurant',
+  resave: 'false',
+  saveUninitialized: 'false'
 }))
 // initialize passpoart
 app.use(passport.initialize())
