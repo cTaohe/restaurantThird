@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const Restaurant = require('./models/restaurant.js')
 const passport = require('passport')
+const session = require('express-session')
 
 // setting mongoose
 const mongoose = require('mongoose')
@@ -17,13 +18,26 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongoose connected')
 })
-
-// setting static page
-app.use(express.static('public'))
+// use passport-session
+app.use(session({
+  secret: 'resraurant'
+}))
+// initialize passpoart
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport.js')(passport)
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated
+  next()
+})
 
 // setting handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
+
+// setting static page
+app.use(express.static('public'))
 
 // use method override
 app.use(methodOverride('_method'))
@@ -31,6 +45,7 @@ app.use(methodOverride('_method'))
 // body-parser
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
+
 
 // 載入路由器
 app.use('/', require('./routes/home.js'))

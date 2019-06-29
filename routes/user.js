@@ -8,8 +8,11 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 // 檢查登入 
-router.post('/login', (req, res) => {
-  res.send('檢查登入!')
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login'
+  })(req, res, next)
 })
 // 註冊頁面 register page
 router.get('/register', (req, res) => {
@@ -17,11 +20,33 @@ router.get('/register', (req, res) => {
 })
 // 註冊檢查
 router.post('/register', (req, res) => {
-  res.send('register!')
+  const {name, email, password, password2} = req.body
+  User.findOne({ email: email })
+    .then(user =>{
+      if (user) {
+        res.render('register', {
+          name,
+          emai,
+          password,
+          password2
+        })
+      } else {
+        const newUser = new User({
+          name,
+          email,
+          password,
+          password2
+        })
+        newUser.save(user => {
+          res.redirect('/')
+        }).catch(err => console.error(err))
+      }
+    })
 })
 // 登出 logout
 router.get('/logout', (req, res) => {
-  res.send('logout')
+  req.logOut()
+  res.redirect('/users/login')
 })
 
 module.exports = router
