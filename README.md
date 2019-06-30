@@ -32,7 +32,20 @@ npm install
 cd restaurantThird/models/seeds
 node restaurantSeeder.js
 ```
+### 在專案底下新增 .nev 檔案
+為了隱藏敏感資訊，使用 `dotenv` 新增`.nev`檔案另外一個儲存 `client ID` 以及 `client secret`
 
+在 [Facebook developers](https://developers.facebook.com/) 、 [Google developers console](https://console.developers.google.com/apis/) 創建應用程式取得 `client ID` 以及 `client secret` 並且記得設定網域 `localhost:3000/auth/認證網站/callback`
+
+`.nev smaple`
+```
+FACEBOOK_ID= //your Client ID
+FACEBOOK_SECRET= //your Client secret
+FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+GOOGLE_ID= //your Client ID
+GOOGLE_SECRET= //your Client secret
+GOOGLE_CALLBACK=http://localhost:3000/auth/google/callback
+```
 ### 執行
 
 在 restaurantThird 資料夾下
