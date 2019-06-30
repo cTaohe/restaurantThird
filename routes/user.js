@@ -26,14 +26,12 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const {name, email, password, password2} = req.body
   let errors = []
-
   if ( !email || !password || !password2 ) {
     errors.push({ message: '信箱、密碼為必要資訊!' })
   }
   if( password !== password2 ) {
     errors.push({ message: '密碼不一致!' })
   }
-
   if (errors.length > 0) {
     res.render('register', {
       errors,
@@ -47,13 +45,13 @@ router.post('/register', (req, res) => {
       if (user) {
         res.render('register', {
           name,
-          emai,
+          email,
           password,
           password2
         })
       } else {
         const newUser = new User({
-          name,
+          name: name || undefined,
           email,
           password
         })

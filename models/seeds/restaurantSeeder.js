@@ -18,6 +18,7 @@ db.once('open', () => {
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(users[i].password, salt, (err, hash) => {
         const newUser = new User({
+          name: users[i].name,
           email: users[i].email,
           password: hash
         })

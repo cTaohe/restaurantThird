@@ -23,6 +23,7 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongoose connected')
 })
+
 // use passport-session
 app.use(session({
   secret: 'resraurant',
